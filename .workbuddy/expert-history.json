@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "sessions": {
+    "e1c0fc41e80e43feabde14c80cb3a351": [
+      {
+        "expertId": "SiteReliabilityEngineer",
+        "name": "Xena",
+        "profession": "站点可靠性工程师",
+        "avatarUrl": "https://acc-1258344699.cos.accelerate.myqcloud.com/workbuddy/experts/avatars/02-Engineering/SiteReliabilityEngineer/SiteReliabilityEngineer.png",
+        "promptUrl": "https://acc-1258344699.cos.accelerate.myqcloud.com/workbuddy/experts/experts/02-Engineering/SiteReliabilityEngineer/SiteReliabilityEngineer_zh.md",
+        "usedAt": 1774792265973,
+        "industryId": "02-Engineering"
+      }
+    ]
+  },
+  "lastUpdated": 1774792283208
+}
