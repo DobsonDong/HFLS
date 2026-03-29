@@ -1,0 +1,2386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>聚沙·成塔 | 杭州外国语学校校友捐赠行动</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1a4f8a;
+      --primary-light: #2563ab;
+      --primary-dark: #0f3360;
+      --accent: #c8922a;
+      --accent-light: #e5a83c;
+      --gold: #d4a843;
+      --bg: #f7f3ee;
+      --bg-white: #ffffff;
+      --text-dark: #1a1a2e;
+      --text-mid: #4a5568;
+      --text-light: #718096;
+      --border: #e2d9cc;
+      --red: #c0392b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ===== NEWS BANNER ===== */
+    .news-banner {
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      z-index: 99;
+      background: linear-gradient(135deg, #d4a843 0%, #e5a83c 100%);
+      color: #fff;
+      padding: 0.6rem 2rem;
+      font-size: 0.8rem;
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      box-shadow: 0 2px 10px rgba(212, 168, 67, 0.25);
+      animation: slideDown 0.6s ease-out;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .news-banner .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(255,255,255,0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      margin-right: 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(26, 79, 138, 0.97);
+      backdrop-filter: blur(10px);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+    .navbar-brand {
+      color: #fff;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+    .navbar-brand span { color: var(--gold); }
+    .navbar-nav {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .navbar-nav a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    .navbar-nav a:hover { color: var(--gold); }
+    .navbar-cta {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 0.4rem 1.2rem;
+      border-radius: 20px;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .navbar-cta:hover {
+      background: var(--accent-light) !important;
+      color: #fff !important;
+      transform: translateY(-1px);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0f2a5c 0%, #1a4f8a 40%, #1e6094 70%, #0d3a5e 100%);
+      padding-top: 3.5rem;
+    }
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(200, 146, 42, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 40%),
+        radial-gradient(circle at 60% 80%, rgba(30, 96, 148, 0.3) 0%, transparent 50%);
+    }
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(212, 168, 67, 0.5);
+      border-radius: 50%;
+      animation: float-up linear infinite;
+    }
+    @keyframes float-up {
+      0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 0.5; }
+      100% { transform: translateY(-100px) translateX(30px); opacity: 0; }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 8rem 2rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(212, 168, 67, 0.15);
+      border: 1px solid rgba(212, 168, 67, 0.4);
+      color: var(--gold);
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.08em;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 3.8rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .hero-title .accent { color: var(--gold); }
+    .hero-subtitle {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.1em;
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+      border-left: 3px solid var(--gold);
+      padding-left: 1.2rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.25s;
+      box-shadow: 0 4px 15px rgba(200, 146, 42, 0.4);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(200, 146, 42, 0.5);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.8);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Right Card */
+    .hero-card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--accent));
+    }
+    .hero-card-title {
+      color: var(--gold);
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+    .progress-section { margin-bottom: 1.5rem; }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.85rem;
+      margin-bottom: 0.6rem;
+    }
+    .progress-label .amount {
+      color: var(--gold);
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-family: 'Noto Serif SC', serif;
+    }
+    .progress-bar-bg {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--primary-light), var(--gold));
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .hero-stat-num {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+    }
+    .hero-stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.2rem;
+    }
+    .hero-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 1.5rem 0;
+    }
+    .hero-orgs {
+      text-align: center;
+    }
+    .hero-orgs-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.05em;
+    }
+    .hero-orgs-names {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+
+    /* ===== SECTION BASE ===== */
+    .section {
+      padding: 5rem 2rem;
+    }
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      text-align: center;
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      text-align: center;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+    .section-desc {
+      text-align: center;
+      color: var(--text-mid);
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.8;
+    }
+    .section-divider {
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--gold));
+      border-radius: 2px;
+      margin: 0.8rem auto 1.5rem;
+    }
+
+    /* ===== STATS BAND ===== */
+    .stats-band {
+      background: var(--primary);
+      padding: 3rem 2rem;
+    }
+    .stats-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .stat-item {
+      text-align: center;
+      position: relative;
+    }
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 10%;
+      height: 80%;
+      width: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+    .stat-num {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+    .stat-unit {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      vertical-align: super;
+      font-size: 1rem;
+    }
+    .stat-label {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.5rem;
+    }
+
+    /* ===== LETTER ===== */
+    .letter-section {
+      background: var(--bg-white);
+      position: relative;
+      overflow: hidden;
+    }
+    .letter-section::before {
+      content: '杭外';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Noto Serif SC', serif;
+      font-size: 18rem;
+      font-weight: 700;
+      color: rgba(26, 79, 138, 0.03);
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline-section {
+      background: var(--bg);
+      padding: 4rem 2rem;
+    }
+    .timeline-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .timeline-grid::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, var(--primary) 20%, var(--primary) 80%, transparent);
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      position: relative;
+      margin-bottom: 3rem;
+      align-items: center;
+    }
+    .timeline-item:nth-child(even) {
+      direction: rtl;
+    }
+    .timeline-item:nth-child(even) .timeline-content {
+      direction: ltr;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-marker {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px; height: 16px;
+      background: var(--bg);
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .timeline-marker.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 6px rgba(212, 168, 67, 0.2);
+      animation: pulse 2s infinite;
+    }
+    .timeline-content {
+      padding: 1.5rem;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(26, 79, 138, 0.06);
+    }
+    .timeline-date {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+    .timeline-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.4rem;
+    }
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+    .letter-box {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 3.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 40px rgba(26, 79, 138, 0.06);
+      position: relative;
+    }
+    .letter-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--gold));
+      border-radius: 16px 16px 0 0;
+    }
+    .letter-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .letter-icon {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .letter-icon svg { width: 24px; height: 24px; color: #fff; fill: none; stroke: currentColor; stroke-width: 1.8; }
+    .letter-meta { flex: 1; }
+    .letter-meta h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.2rem;
+      color: var(--text-dark);
+    }
+    .letter-meta p {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+    }
+    .letter-content {
+      color: var(--text-mid);
+      line-height: 2;
+      font-size: 0.98rem;
+    }
+    .letter-content p { margin-bottom: 1.2rem; }
+    .letter-content .highlight {
+      color: var(--primary);
+      font-weight: 500;
+    }
+    .letter-sign {
+      margin-top: 2rem;
+      text-align: right;
+      color: var(--text-mid);
+      font-family: 'Noto Serif SC', serif;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    /* ===== CAMPUS INTRO ===== */
+    .campus-section { background: var(--bg); }
+    .campus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .campus-img-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(26, 79, 138, 0.15);
+      position: relative;
+      background: linear-gradient(135deg, #1a4f8a, #0f3360);
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .campus-img-placeholder {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      padding: 3rem;
+    }
+    .campus-img-placeholder svg {
+      width: 80px; height: 80px;
+      stroke: rgba(255,255,255,0.4);
+      fill: none;
+      stroke-width: 1.2;
+      margin-bottom: 1rem;
+    }
+    .campus-img-placeholder p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .campus-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--gold);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .campus-info h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.8rem;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    .campus-info h3 span { color: var(--primary); }
+    .campus-info p {
+      color: var(--text-mid);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+    .campus-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .campus-spec {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .campus-spec:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 15px rgba(26, 79, 138, 0.08);
+      transform: translateY(-2px);
+    }
+    .campus-spec-icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.6rem;
+    }
+    .campus-spec-icon svg {
+      width: 16px; height: 16px;
+      stroke: #fff; fill: none; stroke-width: 2;
+    }
+    .campus-spec-val {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .campus-spec-name {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 0.1rem;
+    }
+
+    /* ===== DONATION PURPOSE ===== */
+    .purpose-section { background: var(--bg-white); }
+    .purpose-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .purpose-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .purpose-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--gold));
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    .purpose-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(26, 79, 138, 0.12);
+      border-color: var(--primary-light);
+    }
+    .purpose-card:hover::after { transform: scaleX(1); }
+    .purpose-icon {
+      width: 64px; height: 64px;
+      margin: 0 auto 1.2rem;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .purpose-icon svg {
+      width: 32px; height: 32px;
+      fill: none; stroke: #fff; stroke-width: 1.8;
+    }
+    .icon-bg-1 { background: linear-gradient(135deg, #1a4f8a, #2563ab); }
+    .icon-bg-2 { background: linear-gradient(135deg, #c8922a, #e5a83c); }
+    .icon-bg-3 { background: linear-gradient(135deg, #16a34a, #22c55e); }
+    .icon-bg-4 { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+    .purpose-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.6rem;
+    }
+    .purpose-desc {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* ===== DONATION TIERS ===== */
+    .tiers-section { background: var(--bg); }
+    .tiers-intro {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 16px;
+      padding: 2.5rem;
+      color: #fff;
+      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+    .tiers-intro h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .tiers-intro p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+    }
+    .tier-min-badge {
+      background: var(--gold);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .tier-min-badge strong {
+      display: block;
+      font-size: 1.8rem;
+      font-family: 'Noto Serif SC', serif;
+    }
+    .tier-min-badge span { font-size: 0.8rem; opacity: 0.9; }
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .tier-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 0;
+      border: 2px solid var(--border);
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+    .tier-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 12px 40px rgba(26, 79, 138, 0.12);
+      transform: translateY(-4px);
+    }
+    .tier-card.featured {
+      border-color: var(--gold);
+    }
+    .tier-card.featured:hover {
+      border-color: var(--accent-light);
+    }
+    .tier-featured-badge {
+      position: absolute;
+      top: 0; right: 0;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.25rem 0.8rem;
+      border-radius: 0 14px 0 10px;
+    }
+    .tier-header {
+      padding: 1.5rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .tier-level {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .tier-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.4rem;
+    }
+    .tier-name.gold-text { color: var(--accent); }
+    .tier-price {
+      font-size: 1.5rem;
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .tier-price.gold-price { color: var(--accent); }
+    .tier-price-sub {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+    }
+    .tier-body { padding: 1.2rem 1.5rem 1.5rem; }
+    .tier-perks { list-style: none; }
+    .tier-perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      padding: 0.3rem 0;
+    }
+    .perk-check {
+      width: 16px; height: 16px;
+      min-width: 16px;
+      margin-top: 2px;
+    }
+    .perk-check-blue { color: var(--primary); }
+    .perk-check-gold { color: var(--gold); }
+
+    /* Big tiers row */
+    .big-tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .big-tier {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .big-tier:hover {
+      border-color: var(--gold);
+      box-shadow: 0 12px 40px rgba(200, 146, 42, 0.1);
+      transform: translateY(-4px);
+    }
+    .big-tier-crown {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+    .big-tier-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .big-tier-price {
+      font-size: 1.8rem;
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+    }
+    .big-tier-desc {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* ===== DONATION FORM ===== */
+    .donate-section { background: var(--bg-white); }
+    .donate-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .donate-card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(26, 79, 138, 0.08);
+    }
+    .donate-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .donate-tab {
+      padding: 1.2rem;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      background: transparent;
+    }
+    .donate-tab.active {
+      background: #fff;
+      color: var(--primary);
+      font-weight: 600;
+      box-shadow: 0 2px 0 var(--primary) inset;
+    }
+    .donate-tab:hover:not(.active) { background: rgba(26,79,138,0.04); }
+    .donate-body { padding: 2.5rem; }
+
+    /* Amount selector */
+    .amount-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .amount-btn {
+      padding: 0.75rem;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+    .amount-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .amount-btn.selected {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #fff;
+    }
+    .amount-input-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .amount-input-wrap {
+      flex: 1;
+      position: relative;
+    }
+    .amount-input-prefix {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-mid);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+    .amount-input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2rem;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: 'Noto Sans SC', sans-serif;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .amount-input:focus { border-color: var(--primary); }
+    .amount-input::placeholder { color: var(--text-light); }
+
+    .form-group { margin-bottom: 1.2rem; }
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      margin-bottom: 0.4rem;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: 'Noto Sans SC', sans-serif;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.2s;
+      background: #fff;
+    }
+    .form-input:focus, .form-select:focus { border-color: var(--primary); }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      margin-bottom: 1.5rem;
+    }
+    .form-check input[type="checkbox"] {
+      margin-top: 2px;
+      accent-color: var(--primary);
+    }
+    .form-check a { color: var(--primary); text-decoration: none; }
+    .donate-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-family: 'Noto Sans SC', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .donate-btn:hover {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(26, 79, 138, 0.35);
+    }
+    .donate-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+    .donate-security {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+    .donate-security svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    /* QR tab */
+    .qr-content {
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .qr-box {
+      width: 180px; height: 180px;
+      margin: 0 auto 1.5rem;
+      background: var(--bg);
+      border-radius: 16px;
+      border: 2px dashed var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .qr-box svg {
+      width: 60px; height: 60px;
+      stroke: var(--text-light); fill: none; stroke-width: 1.5;
+    }
+    .qr-box span { font-size: 0.78rem; color: var(--text-light); }
+    .qr-methods {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .qr-method {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--text-mid);
+    }
+    .qr-method-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .dot-wechat { background: #07c160; }
+    .dot-alipay { background: #1677ff; }
+
+    /* ===== HONOR TIERS ===== */
+    .honor-section { background: linear-gradient(135deg, #0f2a5c 0%, #1a4f8a 100%); }
+    .honor-section .section-label { color: var(--gold); }
+    .honor-section .section-title { color: #fff; }
+    .honor-section .section-desc { color: rgba(255,255,255,0.7); }
+    .honor-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .honor-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .honor-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(212, 168, 67, 0.4);
+      transform: translateY(-4px);
+    }
+    .honor-badge-icon {
+      width: 60px; height: 60px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid;
+    }
+    .honor-badge-icon svg {
+      width: 28px; height: 28px;
+      fill: none; stroke-width: 1.8;
+    }
+    .badge-bronze { border-color: #cd7f32; background: rgba(205,127,50,0.12); }
+    .badge-bronze svg { stroke: #cd7f32; }
+    .badge-silver { border-color: #aaa; background: rgba(170,170,170,0.12); }
+    .badge-silver svg { stroke: #aaa; }
+    .badge-gold { border-color: var(--gold); background: rgba(212,168,67,0.12); }
+    .badge-gold svg { stroke: var(--gold); }
+    .badge-platinum { border-color: #b9f2ff; background: rgba(185,242,255,0.08); }
+    .badge-platinum svg { stroke: #b9f2ff; }
+    .honor-tier-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .honor-tier-range {
+      font-size: 0.82rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-family: 'Noto Serif SC', serif;
+    }
+    .honor-perks { list-style: none; text-align: left; }
+    .honor-perk {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.7);
+      padding: 0.2rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .honor-perk::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+    .honor-card-name-bronze { color: #cd7f32; }
+    .honor-card-name-silver { color: #ccc; }
+    .honor-card-name-gold { color: var(--gold); }
+    .honor-card-name-platinum { color: #b9f2ff; }
+
+    /* ===== FAQ ===== */
+    .faq-section { background: var(--bg-white); }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .faq-item {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .faq-item:hover { box-shadow: 0 4px 20px rgba(26,79,138,0.07); }
+    .faq-question {
+      padding: 1.2rem 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      user-select: none;
+      transition: background 0.2s;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+    .faq-question:hover { background: var(--bg); }
+    .faq-question.open { color: var(--primary); }
+    .faq-chevron {
+      width: 18px; height: 18px;
+      min-width: 18px;
+      stroke: var(--text-light);
+      fill: none; stroke-width: 2;
+      transition: transform 0.25s;
+    }
+    .faq-question.open .faq-chevron {
+      transform: rotate(180deg);
+      stroke: var(--primary);
+    }
+    .faq-answer {
+      display: none;
+      padding: 0 1.5rem 1.2rem;
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      border-top: 1px solid var(--border);
+    }
+    .faq-answer.open { display: block; }
+
+    /* ===== CONTACT ===== */
+    .contact-section { background: var(--bg); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 3rem;
+      border: 1px solid var(--border);
+    }
+    .contact-card h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.4rem;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+    .contact-card p {
+      color: var(--text-mid);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .contact-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .contact-info-icon {
+      width: 40px; height: 40px;
+      min-width: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-info-icon svg {
+      width: 18px; height: 18px;
+      stroke: #fff; fill: none; stroke-width: 2;
+    }
+    .contact-info-label {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .contact-info-val {
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+    .orgs-card {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      color: #fff;
+    }
+    .orgs-card h4 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+    .org-item {
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .org-item:last-child { margin-bottom: 0; }
+    .org-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    .org-desc { font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+    .transparency-note {
+      background: rgba(212, 168, 67, 0.1);
+      border: 1px solid rgba(212, 168, 67, 0.3);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 1.5rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0d1f3c;
+      color: rgba(255,255,255,0.6);
+      padding: 3rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 2rem;
+    }
+    .footer-brand {
+      max-width: 360px;
+    }
+    .footer-logo {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+      .footer-links-group h5 {
+        color: rgba(255,255,255,0.85);
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        letter-spacing: 0.05em;
+      }
+      .footer-links { list-style: none; }
+      .footer-links li { margin-bottom: 0.5rem; }
+      .footer-links a {
+        color: rgba(255,255,255,0.5);
+        text-decoration: none;
+        font-size: 0.82rem;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .timeline-grid::before { left: 20px; }
+      .timeline-item { grid-template-columns: 1fr; padding-left: 50px; }
+      .timeline-item:nth-child(even) { direction: ltr; }
+      .timeline-marker { left: 20px; }
+      .news-banner { font-size: 0.75rem; padding: 0.5rem 1rem; }
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+    .footer-beian { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .navbar-nav { display: none; }
+      .hero-content { grid-template-columns: 1fr; gap: 2rem; padding-top: 6rem; }
+      .hero-title { font-size: 2.4rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2)::after { display: none; }
+      .campus-grid { grid-template-columns: 1fr; }
+      .purpose-grid { grid-template-columns: repeat(2, 1fr); }
+      .tiers-grid, .big-tiers { grid-template-columns: 1fr; }
+      .tiers-intro { grid-template-columns: 1fr; }
+      .honor-grid { grid-template-columns: repeat(2, 1fr); }
+      .faq-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-info-grid { grid-template-columns: 1fr; }
+      .footer-top { flex-direction: column; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .section { padding: 3.5rem 1.25rem; }
+      .amount-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .purpose-grid { grid-template-columns: 1fr; }
+      .honor-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" role="navigation" aria-label="主导航">
+  <a href="#" class="navbar-brand">杭外 <span>·</span> 聚沙成塔</a>
+  <ul class="navbar-nav">
+    <li><a href="#about">关于项目</a></li>
+    <li><a href="#campus">新校区</a></li>
+    <li><a href="#tiers">捐款方式</a></li>
+    <li><a href="#honor">荣誉体系</a></li>
+    <li><a href="#faq">常见问题</a></li>
+    <li><a href="#donate" class="navbar-cta">立即捐款</a></li>
+  </ul>
+</nav>
+
+<!-- NEWS BANNER -->
+<div class="news-banner">
+  <span class="badge">🎉 最新进展</span>
+  余杭校区初步设计及概算已获批 · 向正式开工建设迈进
+</div>
+
+<!-- HERO -->
+<section class="hero" aria-label="首屏">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        募捐进行中 · 2026年春季行动
+      </div>
+      <h1 class="hero-title">聚沙<span class="accent">·</span>成塔</h1>
+      <p class="hero-subtitle">杭州外国语学校校友捐赠行动</p>
+      <p class="hero-desc">
+        杭外新校区（余杭校区）正在建设中。每一笔来自校友的心意，都将化为这片土地上最坚实的砖石，共同托举下一代杭外学子的梦想。
+      </p>
+      <div class="hero-actions">
+        <a href="#donate" class="btn-primary">
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          立即捐款
+        </a>
+        <a href="#about" class="btn-secondary">
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          了解更多
+        </a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-title">🏫 新校区建设进度</div>
+        <div class="progress-section">
+          <div class="progress-label">
+            <span>累计募集</span>
+            <span class="amount" id="hero-amount">¥ 0</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-fill" style="width:0"></div>
+          </div>
+          <div class="progress-label" style="margin-top:0.4rem">
+            <span style="font-size:0.75rem;color:rgba(255,255,255,0.5)">目标：¥1,000万</span>
+            <span style="font-size:0.75rem;color:rgba(255,255,255,0.5)" id="progress-pct">0%</span>
+          </div>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num" id="counter-donors">0</span>
+            <div class="hero-stat-label">参与校友人数</div>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num" id="counter-days">0</span>
+            <div class="hero-stat-label">行动进行天数</div>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">145</span>
+            <div class="hero-stat-label">新校区亩数（亩）</div>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">60</span>
+            <div class="hero-stat-label">新校区班级数</div>
+          </div>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-orgs">
+          <div class="hero-orgs-label">联合发起机构</div>
+          <div class="hero-orgs-names">
+            浙江杭州外国语学校教育基金会<br>
+            杭州外国语学校校友总会
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band" id="about">
+  <div class="stats-grid">
+    <div class="stat-item fade-in">
+      <span class="stat-num"><span id="cnt1">0</span><span class="stat-unit">+</span></span>
+      <div class="stat-label">在册校友人数</div>
+    </div>
+    <div class="stat-item fade-in fade-in-delay-1">
+      <span class="stat-num"><span id="cnt2">0</span><span class="stat-unit">亩</span></span>
+      <div class="stat-label">新校区占地面积</div>
+    </div>
+    <div class="stat-item fade-in fade-in-delay-2">
+      <span class="stat-num"><span id="cnt3">0</span><span class="stat-unit">年</span></span>
+      <div class="stat-label">杭外办学历史</div>
+    </div>
+    <div class="stat-item fade-in fade-in-delay-3">
+      <span class="stat-num"><span id="cnt4">0</span><span class="stat-unit">项</span></span>
+      <div class="stat-label">可定向捐赠项目</div>
+    </div>
+  </div>
+</div>
+
+<!-- LETTER -->
+<section class="section letter-section">
+  <div class="section-inner">
+    <div class="section-label">见字如面</div>
+    <h2 class="section-title">致全体校友的一封信</h2>
+    <div class="section-divider"></div>
+    <div class="letter-box fade-in">
+      <div class="letter-header">
+        <div class="letter-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div class="letter-meta">
+          <h3>亲爱的杭外校友</h3>
+          <p>来自：浙江杭州外国语学校教育基金会 &amp; 校友总会 · 2026年3月</p>
+        </div>
+      </div>
+      <div class="letter-content">
+        <p>见字如面。岁月流转，不变的是我们心中那段杭外时光——操场上的朝霞、教室里的争论、毕业时的相拥。那些年，杭外给了我们一个起点，如今，是我们回望的时候了。</p>
+        <p><span class="highlight">2026年3月26日</span>，杭外余杭校区<span class="highlight">初步设计及概算正式获批</span>。这意味着新校区的"骨架"与"细节"已全部敲定，项目向正式开工建设迈出了重要一步。万事俱备，开工在即。</p>
+        <p>占地145亩、规划60个班级、双铁上盖交通……新校区将承载比我们当年更大的梦想。然而，一砖一瓦皆需支撑，我们希望这份支撑，来自每一位曾在杭外成长的你。</p>
+        <p>这不是一场募集巨款的活动。<span class="highlight">哪怕每年一杯咖啡的心意，加在一起也可以筑成一堵墙。</span>聚沙成塔，正是这个意思。</p>
+        <p>感谢你阅读至此。无论是否捐款，你都是杭外的一部分，永远。</p>
+      </div>
+      <div class="letter-sign">
+        浙江杭州外国语学校教育基金会<br>
+        杭州外国语学校校友总会<br>
+        二〇二六年三月
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUS -->
+<section class="section campus-section" id="campus">
+  <div class="section-inner">
+    <div class="section-label">余杭校区</div>
+    <h2 class="section-title">新校区是什么样的？</h2>
+    <div class="section-divider"></div>
+    <div class="campus-grid">
+      <div class="campus-img-wrap fade-in">
+        <div class="campus-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <p>杭外余杭新校区效果图<br>（占地145亩，规划60班）</p>
+        </div>
+        <div class="campus-badge">余杭校区 · 建设中</div>
+      </div>
+      <div class="campus-info fade-in fade-in-delay-1">
+        <h3>一所<span>承载未来</span>的校园</h3>
+        <p>杭外余杭新校区选址于杭州余杭区，毗邻双地铁，地处长三角一体化发展核心腹地。新校区以现代教育理念为核心，融合智慧校园、国际化教学、高水准体艺设施于一体，将成为杭外新的教育旗帜。</p>
+        <div class="campus-specs">
+          <div class="campus-spec">
+            <div class="campus-spec-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            </div>
+            <div class="campus-spec-val">145</div>
+            <div class="campus-spec-name">占地面积（亩）</div>
+          </div>
+          <div class="campus-spec">
+            <div class="campus-spec-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="campus-spec-val">60</div>
+            <div class="campus-spec-name">规划班级数</div>
+          </div>
+          <div class="campus-spec">
+            <div class="campus-spec-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="campus-spec-val">双铁</div>
+            <div class="campus-spec-name">上盖交通配套</div>
+          </div>
+          <div class="campus-spec">
+            <div class="campus-spec-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="campus-spec-val">智慧</div>
+            <div class="campus-spec-name">AI + 国际化教育</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT TIMELINE -->
+<section class="timeline-section" id="timeline">
+  <div class="section-inner">
+    <div class="section-label">项目进展</div>
+    <h2 class="section-title">余杭校区建设时间线</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="timeline-grid fade-in">
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-date">2025年</div>
+        <div class="timeline-title">立项启动</div>
+        <div class="timeline-desc">余杭校区项目正式立项，启动选址与前期规划工作</div>
+      </div>
+      <div class="timeline-marker"></div>
+      <div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-date">2026年3月26日</div>
+        <div class="timeline-title">初步设计获批</div>
+        <div class="timeline-desc">初步设计及概算获得批复，"骨架"与"细节"全部敲定</div>
+      </div>
+      <div class="timeline-marker active"></div>
+      <div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-date">2026年</div>
+        <div class="timeline-title">正式开工</div>
+        <div class="timeline-desc">进入实质性建设阶段，桩基工程启动</div>
+      </div>
+      <div class="timeline-marker"></div>
+      <div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-content">
+        <div class="timeline-date">2028年</div>
+        <div class="timeline-title">投入使用</div>
+        <div class="timeline-desc">新校区竣工，迎来第一批杭外学子</div>
+      </div>
+      <div class="timeline-marker"></div>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PURPOSE -->
+<section class="section purpose-section">
+  <div class="section-inner">
+    <div class="section-label">捐款用途</div>
+    <h2 class="section-title">您的捐款，用于哪里？</h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">每一笔捐款都将专款专用，接受年度公开审计，定期向捐赠人报告进展。</p>
+    <div class="purpose-grid">
+      <div class="purpose-card fade-in">
+        <div class="purpose-icon icon-bg-1">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="purpose-title">新校区建设</div>
+        <div class="purpose-desc">支持余杭新校区主体建筑、操场、图书馆、实验室等核心教育设施建设</div>
+      </div>
+      <div class="purpose-card fade-in fade-in-delay-1">
+        <div class="purpose-icon icon-bg-2">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="purpose-title">师资培育发展</div>
+        <div class="purpose-desc">资助优秀教师赴国内外顶尖学府访学研修，吸引高层次教育人才加入杭外</div>
+      </div>
+      <div class="purpose-card fade-in fade-in-delay-2">
+        <div class="purpose-icon icon-bg-3">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="purpose-title">学生成长奖助</div>
+        <div class="purpose-desc">设立学业奖学金与困难学生助学金，确保每一个孩子都能平等享有杭外教育</div>
+      </div>
+      <div class="purpose-card fade-in fade-in-delay-3">
+        <div class="purpose-icon icon-bg-4">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="purpose-title">AI 算力教育</div>
+        <div class="purpose-desc">建设人工智能实验室，为学生提供前沿科技体验，培育面向未来的数字素养</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="section tiers-section" id="tiers">
+  <div class="section-inner">
+    <div class="section-label">捐款套餐</div>
+    <h2 class="section-title">选择你的参与方式</h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">无论金额多少，每一份心意都同样珍贵。以下是常见捐款方式，您也可以自定义金额。</p>
+
+    <div class="tiers-intro fade-in">
+      <div>
+        <h3>年度微捐赠计划</h3>
+        <p>校友每年捐出一杯咖啡的钱，坚持三年。万人同行，便是万米长城。这是最温柔的支持方式。</p>
+      </div>
+      <div class="tier-min-badge">
+        <strong>¥99</strong>
+        <span>起 / 年</span>
+      </div>
+    </div>
+
+    <div class="tiers-grid">
+      <div class="tier-card fade-in">
+        <div class="tier-header">
+          <div class="tier-level">基础档</div>
+          <div class="tier-name">一砖一瓦</div>
+          <div class="tier-price">¥99 <small style="font-size:0.7rem;color:var(--text-light)">/年</small></div>
+          <div class="tier-price-sub">三年累计 ¥297</div>
+        </div>
+        <div class="tier-body">
+          <ul class="tier-perks">
+            <li class="tier-perk">
+              <svg class="perk-check perk-check-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              电子捐赠证书
+            </li>
+            <li class="tier-perk">
+              <svg class="perk-check perk-check-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              校友会感谢函
+            </li>
+            <li class="tier-perk">
+              <svg class="perk-check perk-check-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              年度进展报告
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="tier-card featured fade-in fade-in-delay-1">
+        <div class="tier-featured-badge">最受欢迎</div>
+        <div class="tier-header">
+          <div class="tier-level">标准档</div>
+          <div class="tier-name gold-text">聚沙纪念牌</div>
+          <div class="tier-price gold-price">¥3,000</div>
+          <div class="tier-price-sub">一次性 · 永久认可</div>
+        </div>
+        <div class="tier-body">
+          <ul class="tier-perks">
+            <li class="tier-perk">
+              <svg class="perk-check perk-check-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              实体「聚沙纪念牌」
+            </li>
+            <li class="tier-perk">
+              <svg class="perk-check perk-check-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              校友名录永久收录
+            </li>
+            <li class="tier-perk">
+              <svg class="perk-check perk-check-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              优先参加校庆返校
+            </li>
+            <li class="tier-perk">
+              <svg class="perk-check perk-check-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              税前抵扣凭证
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="tier-card fade-in fade-in-delay-2">
+        <div class="tier-header">
+          <div class="tier-level">进阶档</div>
+          <div class="tier-name">筑塔荣誉牌</div>
+          <div class="tier-price">¥10,000</div>
+          <div class="tier-price-sub">一次性 · 荣誉认可</div>
+        </div>
+        <div class="tier-body">
+          <ul class="tier-perks">
+            <li class="tier-perk">
+              <svg class="perk-check perk-check-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              校区荣誉墙刻名
+            </li>
+            <li class="tier-perk">
+              <svg class="perk-check perk-check-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              校长亲笔感谢信
+            </li>
+            <li class="tier-perk">
+              <svg class="perk-check perk-check-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              新校区开幕典礼邀请
+            </li>
+            <li class="tier-perk">
+              <svg class="perk-check perk-check-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              税前抵扣凭证
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="big-tiers">
+      <div class="big-tier fade-in">
+        <div style="font-size:2rem;margin-bottom:0.8rem">🏛️</div>
+        <div class="big-tier-name">冠名专室</div>
+        <div class="big-tier-price">¥100,000</div>
+        <div class="big-tier-desc">以您或您指定的名义冠名新校区某一教室或专功能室，永久铭牌，代代相传</div>
+      </div>
+      <div class="big-tier fade-in fade-in-delay-1">
+        <div style="font-size:2rem;margin-bottom:0.8rem">🎭</div>
+        <div class="big-tier-name">冠名厅堂</div>
+        <div class="big-tier-price">¥300,000</div>
+        <div class="big-tier-desc">冠名新校区报告厅、艺术中心或体育馆等重要场馆，永久铭牌及年度纪念活动席位</div>
+      </div>
+      <div class="big-tier fade-in fade-in-delay-2">
+        <div style="font-size:2rem;margin-bottom:0.8rem">🌟</div>
+        <div class="big-tier-name">战略合伙人</div>
+        <div class="big-tier-price">¥1,000,000+</div>
+        <div class="big-tier-desc">企业或个人战略级支持，联合冠名重大建设项目，享有最高荣誉认可及专属定制回馈</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE FORM -->
+<section class="section donate-section" id="donate">
+  <div class="section-inner">
+    <div class="section-label">在线捐款</div>
+    <h2 class="section-title">立即参与捐赠</h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">安全、透明、每笔均可查询。</p>
+    <div class="donate-wrap fade-in">
+      <div class="donate-card">
+        <div class="donate-tabs" role="tablist">
+          <button class="donate-tab active" role="tab" aria-selected="true" onclick="switchTab(0, this)">
+            在线填写捐款
+          </button>
+          <button class="donate-tab" role="tab" aria-selected="false" onclick="switchTab(1, this)">
+            扫码捐款
+          </button>
+        </div>
+        <!-- Tab 0: Form -->
+        <div class="donate-body" id="tab-0">
+          <div style="margin-bottom:1.5rem">
+            <label class="form-label">选择捐款金额（元）</label>
+            <div class="amount-grid">
+              <button class="amount-btn" onclick="selectAmount(99, this)">¥99</button>
+              <button class="amount-btn" onclick="selectAmount(500, this)">¥500</button>
+              <button class="amount-btn selected" onclick="selectAmount(3000, this)">¥3,000</button>
+              <button class="amount-btn" onclick="selectAmount(10000, this)">¥10,000</button>
+            </div>
+            <div class="amount-input-row">
+              <div class="amount-input-wrap">
+                <span class="amount-input-prefix">¥</span>
+                <input type="number" class="amount-input" id="amount-input" placeholder="自定义金额" min="1" oninput="onCustomAmount(this)">
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="donor-name">捐款人姓名</label>
+              <input type="text" class="form-input" id="donor-name" placeholder="请输入真实姓名" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="donor-grad">毕业届次</label>
+              <input type="text" class="form-input" id="donor-grad" placeholder="如：2010届高中" autocomplete="off">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="donor-phone">联系电话</label>
+              <input type="tel" class="form-input" id="donor-phone" placeholder="用于接收捐款凭证" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="donor-email">电子邮箱</label>
+              <input type="email" class="form-input" id="donor-email" placeholder="选填，接收电子证书" autocomplete="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="donate-direction">捐款方向</label>
+            <select class="form-select" id="donate-direction">
+              <option value="">不指定（由基金会统筹安排）</option>
+              <option value="building">新校区建设</option>
+              <option value="teacher">师资发展</option>
+              <option value="student">学生奖助学金</option>
+              <option value="ai">AI教育算力</option>
+              <option value="naming">专项冠名（请联系我们）</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="donate-remark">留言（选填）</label>
+            <input type="text" class="form-input" id="donate-remark" placeholder="您对母校的寄语，将展示在校友留言墙">
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="agree-terms" checked>
+            <label for="agree-terms">我已阅读并同意《捐赠协议》，了解捐款将用于杭外教育基金，并接受年度资金使用报告</label>
+          </div>
+          <button class="donate-btn" onclick="handleDonate()" aria-label="提交捐款信息">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            确认捐款 · 共建杭外新家园
+          </button>
+          <div class="donate-security">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            捐款信息加密传输，由官方基金会账户接收，全程可查
+          </div>
+        </div>
+        <!-- Tab 1: QR -->
+        <div class="donate-body" id="tab-1" style="display:none">
+          <div class="qr-content">
+            <h3 style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:var(--text-dark);margin-bottom:0.5rem">扫码直接捐款</h3>
+            <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1.5rem">支持微信 / 支付宝，捐款后请截图并备注姓名及届次</p>
+            <div class="qr-methods">
+              <div class="qr-method">
+                <div class="qr-method-dot dot-wechat"></div>
+                微信支付
+              </div>
+              <div class="qr-method">
+                <div class="qr-method-dot dot-alipay"></div>
+                支付宝
+              </div>
+            </div>
+            <div class="qr-box">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
+              <span>二维码由发起方提供</span>
+            </div>
+            <p style="font-size:0.82rem;color:var(--text-mid);line-height:1.7">捐款后，请将截图及姓名、届次发送至<br>
+            <a href="mailto:alumni@hzfls.org" style="color:var(--primary)">alumni@hzfls.org</a><br>
+            或联系校友总会，以便为您开具凭证</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONOR -->
+<section class="section honor-section" id="honor">
+  <div class="section-inner">
+    <div class="section-label">荣誉体系</div>
+    <h2 class="section-title">您的支持，将被永远铭记</h2>
+    <div class="section-divider" style="background:linear-gradient(90deg,var(--gold),var(--accent-light))"></div>
+    <p class="section-desc">依据捐款金额，授予不同等级校友荣誉认证，永久有效，代代传承。</p>
+    <div class="honor-grid">
+      <div class="honor-card fade-in">
+        <div class="honor-badge-icon badge-bronze">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+        </div>
+        <div class="honor-tier-name honor-card-name-bronze">聚沙荣誉</div>
+        <div class="honor-tier-range">¥99 – ¥2,999</div>
+        <ul class="honor-perks">
+          <li class="honor-perk">电子捐赠证书</li>
+          <li class="honor-perk">校友会感谢信</li>
+          <li class="honor-perk">年度进展通报</li>
+        </ul>
+      </div>
+      <div class="honor-card fade-in fade-in-delay-1">
+        <div class="honor-badge-icon badge-silver">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+        </div>
+        <div class="honor-tier-name honor-card-name-silver">筑塔荣誉</div>
+        <div class="honor-tier-range">¥3,000 – ¥9,999</div>
+        <ul class="honor-perks">
+          <li class="honor-perk">实体纪念牌</li>
+          <li class="honor-perk">校友名录收录</li>
+          <li class="honor-perk">优先参加校庆</li>
+          <li class="honor-perk">税前抵扣凭证</li>
+        </ul>
+      </div>
+      <div class="honor-card fade-in fade-in-delay-2">
+        <div class="honor-badge-icon badge-gold">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+        </div>
+        <div class="honor-tier-name honor-card-name-gold">金石荣誉</div>
+        <div class="honor-tier-range">¥10,000 – ¥99,999</div>
+        <ul class="honor-perks">
+          <li class="honor-perk">校区荣誉墙刻名</li>
+          <li class="honor-perk">校长亲笔感谢信</li>
+          <li class="honor-perk">新校区开幕邀请</li>
+          <li class="honor-perk">税前抵扣凭证</li>
+        </ul>
+      </div>
+      <div class="honor-card fade-in fade-in-delay-3">
+        <div class="honor-badge-icon badge-platinum">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+        </div>
+        <div class="honor-tier-name honor-card-name-platinum">百年基石</div>
+        <div class="honor-tier-range">¥100,000 以上</div>
+        <ul class="honor-perks">
+          <li class="honor-perk">专项冠名权益</li>
+          <li class="honor-perk">永久铭牌</li>
+          <li class="honor-perk">最高荣誉证书</li>
+          <li class="honor-perk">定制回馈方案</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-section" id="faq">
+  <div class="section-inner">
+    <div class="section-label">常见问题</div>
+    <h2 class="section-title">您可能想了解的</h2>
+    <div class="section-divider"></div>
+    <div class="faq-grid">
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          捐款由哪个机构接收，如何保障安全？
+          <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">所有捐款由<strong>浙江杭州外国语学校教育基金会</strong>统一接收，该基金会依法在浙江省民政厅登记注册，具备公开募捐资格，账目接受审计机构年度审计，向社会公开。</div>
+      </div>
+      <div class="faq-item fade-in fade-in-delay-1">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          捐款可以指定用途吗？
+          <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">可以。您在捐款时可以选择"新校区建设"、"师资发展"、"学生奖助学金"或"AI教育"等方向进行定向捐赠。基金会将按您的意愿专款专用，并在年度报告中单独列明。</div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          捐款可以享受税收优惠吗？
+          <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">可以。向具备公益性捐赠税前扣除资格的基金会捐款，企业可在税前全额扣除，个人可按相关规定享受个人所得税优惠。捐款后可申请开具正规捐赠凭证。</div>
+      </div>
+      <div class="faq-item fade-in fade-in-delay-1">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          我如何知道捐款用到哪里了？
+          <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">基金会承诺每年对外公布年度捐款使用报告，捐赠人可通过留档的联系方式接收进展推送。大额捐款人（1万元以上）将额外获得专项进展报告。</div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          最低捐款金额是多少？
+          <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">没有硬性最低金额，我们欢迎任何数额的支持。推荐的起点是年度微捐赠计划的¥99/年。哪怕是一元钱，代表的也是一份心意和对母校的认同。</div>
+      </div>
+      <div class="faq-item fade-in fade-in-delay-1">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          企业或团体可以参与吗？
+          <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">非常欢迎！企业、班级团体或校友群体均可以团体名义捐款，并享受专项冠名等定制回馈方案。请联系 alumni@hzfls.org 与我们详谈合作方式。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="section-inner">
+    <div class="section-label">联系我们</div>
+    <h2 class="section-title">有疑问，找我们</h2>
+    <div class="section-divider"></div>
+    <div class="contact-grid">
+      <div class="contact-card fade-in">
+        <h3>联系方式</h3>
+        <p>如您有捐款疑问、冠名咨询或希望获取凭证，欢迎通过以下方式与我们联系。</p>
+        <div class="contact-info-grid">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">电子邮件</div>
+              <div class="contact-info-val">alumni@hzfls.org</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">通讯地址</div>
+              <div class="contact-info-val">杭州市余杭区杭外校区</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14h-.08z"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">工作时间</div>
+              <div class="contact-info-val">周一至周五 9:00–17:00</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">校友服务</div>
+              <div class="contact-info-val">微信公众号：杭外校友</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="orgs-card fade-in fade-in-delay-1">
+        <h4>联合发起机构</h4>
+        <div class="org-item">
+          <div class="org-name">浙江杭州外国语学校教育基金会</div>
+          <div class="org-desc">依法注册的公益性基金会，负责接收、管理和使用捐款，承担信息公开义务</div>
+        </div>
+        <div class="org-item">
+          <div class="org-name">杭州外国语学校校友总会</div>
+          <div class="org-desc">汇聚全球杭外校友，负责发起倡导、组织校友参与及后续校友关怀工作</div>
+        </div>
+        <div class="transparency-note">
+          所有募集资金专项用于教育公益用途，每年对外公布使用报告，接受社会监督与第三方审计。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">聚沙·成塔 <span>|</span> 杭外校友捐赠行动</div>
+        <div class="footer-tagline">
+          每一位杭外校友的心意，都将化作新校区最坚实的基石。<br>
+          聚沙成塔，共建属于我们的下一个家。
+        </div>
+      </div>
+      <div class="footer-links-group">
+        <h5>快速导航</h5>
+        <ul class="footer-links">
+          <li><a href="#about">关于项目</a></li>
+          <li><a href="#campus">新校区介绍</a></li>
+          <li><a href="#timeline">项目进展</a></li>
+          <li><a href="#tiers">捐款套餐</a></li>
+          <li><a href="#honor">荣誉体系</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-group">
+        <h5>支持与法律</h5>
+        <ul class="footer-links">
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#contact">联系我们</a></li>
+          <li><a href="#">捐赠协议</a></li>
+          <li><a href="#">隐私政策</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        © 2026 浙江杭州外国语学校教育基金会 · 杭州外国语学校校友总会 · 保留所有权利
+      </div>
+      <div class="footer-beian">
+        浙ICP备XXXXXXXX号 · 浙公网安备 XXXXXXXXXXXXXXXX号
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SUCCESS MODAL -->
+<div id="success-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:20px;padding:3rem;max-width:480px;width:90%;text-align:center;position:relative;">
+    <div style="width:72px;height:72px;background:linear-gradient(135deg,#16a34a,#22c55e);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
+      <svg style="width:36px;height:36px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h3 style="font-family:'Noto Serif SC',serif;font-size:1.5rem;color:#1a1a2e;margin-bottom:0.8rem">感谢您的支持！</h3>
+    <p style="color:#4a5568;font-size:0.95rem;line-height:1.8;margin-bottom:2rem">您的捐款意向已提交成功。<br>校友总会将在 1-3 个工作日内与您联系，确认捐款详情并发送正式凭证。</p>
+    <button onclick="document.getElementById('success-modal').style.display='none'" style="background:var(--primary);color:#fff;border:none;padding:0.8rem 2rem;border-radius:10px;font-size:0.95rem;cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-weight:500">好的，期待杭外新未来</button>
+  </div>
+</div>
+
+<script>
+  // ===== PARTICLES =====
+  (function() {
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (8 + Math.random() * 12) + 's';
+      p.style.animationDelay = -(Math.random() * 20) + 's';
+      p.style.width = p.style.height = (1 + Math.random() * 3) + 'px';
+      container.appendChild(p);
+    }
+  })();
+
+  // ===== COUNTER ANIMATION =====
+  function animateCounter(el, target, duration, suffix) {
+    const start = performance.now();
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  // ===== SCROLL REVEAL =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Trigger counters for stats band
+        if (e.target.closest('.stats-band')) {
+          animateCounter(document.getElementById('cnt1'), 8000, 1800);
+          animateCounter(document.getElementById('cnt2'), 145, 1500);
+          animateCounter(document.getElementById('cnt3'), 55, 1500);
+          animateCounter(document.getElementById('cnt4'), 12, 1200);
+        }
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ===== HERO PROGRESS ANIMATION =====
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      // Demo data
+      const raised = 2380000;
+      const goal = 10000000;
+      const pct = Math.round(raised / goal * 100);
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-pct').textContent = pct + '%';
+      
+      let n = 0;
+      const interval = setInterval(() => {
+        n += raised / 60;
+        if (n >= raised) { n = raised; clearInterval(interval); }
+        document.getElementById('hero-amount').textContent = '¥ ' + Math.round(n).toLocaleString('zh-CN');
+      }, 30);
+      
+      let d = 0;
+      const dInt = setInterval(() => {
+        d++;
+        if (d >= 283) { clearInterval(dInt); }
+        document.getElementById('counter-donors').textContent = d;
+      }, 10);
+      
+      let days = 0;
+      const daysInt = setInterval(() => {
+        days++;
+        if (days >= 18) { clearInterval(daysInt); }
+        document.getElementById('counter-days').textContent = days;
+      }, 80);
+    }, 600);
+  });
+
+  // ===== TABS =====
+  function switchTab(idx, btn) {
+    document.querySelectorAll('.donate-tab').forEach((t, i) => {
+      t.classList.toggle('active', i === idx);
+      t.setAttribute('aria-selected', i === idx);
+    });
+    document.getElementById('tab-0').style.display = idx === 0 ? 'block' : 'none';
+    document.getElementById('tab-1').style.display = idx === 1 ? 'block' : 'none';
+  }
+
+  // ===== AMOUNT =====
+  let selectedAmount = 3000;
+  function selectAmount(val, btn) {
+    selectedAmount = val;
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('amount-input').value = '';
+  }
+  function onCustomAmount(inp) {
+    selectedAmount = parseFloat(inp.value) || 0;
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+  }
+
+  // ===== FAQ =====
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-answer.open').forEach(a => {
+      a.classList.remove('open');
+      a.previousElementSibling.classList.remove('open');
+      a.previousElementSibling.setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      answer.classList.add('open');
+      btn.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  // ===== DONATE =====
+  function handleDonate() {
+    const name = document.getElementById('donor-name').value.trim();
+    const phone = document.getElementById('donor-phone').value.trim();
+    const agreed = document.getElementById('agree-terms').checked;
+    if (!name) { alert('请填写捐款人姓名'); document.getElementById('donor-name').focus(); return; }
+    if (!phone) { alert('请填写联系电话'); document.getElementById('donor-phone').focus(); return; }
+    if (!agreed) { alert('请阅读并同意捐赠协议'); return; }
+    if (!selectedAmount || selectedAmount < 1) { alert('请选择或输入捐款金额'); return; }
+    const modal = document.getElementById('success-modal');
+    modal.style.display = 'flex';
+  }
+
+  // ===== CLOSE MODAL ON BACKDROP =====
+  document.getElementById('success-modal').addEventListener('click', function(e) {
+    if (e.target === this) this.style.display = 'none';
+  });
+</script>
+</body>
+</html>
